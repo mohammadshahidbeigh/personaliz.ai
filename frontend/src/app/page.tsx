@@ -181,7 +181,7 @@ export default function Home() {
               {/* Actor Selection */}
               <div>
                 <label htmlFor="actor" className="block text-sm font-medium text-gray-700 mb-2">
-                  Select Actors *
+                  Select Actor *
                 </label>
                 <select
                   id="actor"
