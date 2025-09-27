@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Personalization {
+  id            Int      @id @default(autoincrement())
+  name          String
+  city          String
+  phone         String
+  actorId       String
+  syncJobId     String?  // returned job id from SyncLabs
+  videoUrl      String?  // final video url
+  whatsappMsgId String?  // id from Twilio/WATI when sending
+  status        String   @default("pending") // pending, queued, sync_submitted, ready, sent, delivered, read, failed
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  events        Event[]
+}
+
+model Event {
+  id               Int             @id @default(autoincrement())
+  personalization  Personalization @relation(fields: [personalizationId], references: [id], onDelete: Cascade)
+  personalizationId Int
+  type             String          // request, sync_submitted, sync_completed, whatsapp_sent, delivered, read, failed
+  payload          Json?
+  createdAt        DateTime        @default(now())
+}
+
+model Actor {
+  id          String   @id
+  name        String
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
