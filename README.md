@@ -347,24 +347,6 @@ docker-compose logs -f --tail=100
 4. **CDN**: Use CDN for serving generated videos
 5. **Load Balancing**: Scale horizontally for high traffic
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the ISC License.
-
-## 📞 Support
-
-For support and questions:
-- Email: support@personaliz.ai
-- Documentation: [Project Wiki]
-- Issues: [GitHub Issues]
 
 ## 🙏 Acknowledgments
 
